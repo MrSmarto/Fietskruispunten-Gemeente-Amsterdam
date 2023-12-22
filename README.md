@@ -12,9 +12,9 @@ Als onderdeel van onze minor hebben wij, een groep studenten met een technische 
 - Visualisatie van complexe data op een manier die zowel technisch als visueel studenten aanspreekt.
 
 ### Teamleden
-- [MrSmarto](https://github.com/MrSmarto): **Thijmen**: Tech-student, verantwoordelijk voor de technische ontwikkeling.
-- [shawnroy2](https://github.com/shawnroy2): **Shawn**: Tech-student, verantwoordelijk voor de technische ontwikkeling.
-- [karshoutman](https://github.com/karshoutman): **Kars**: Visual-student, verantwoordelijk voor de visuele aspecten van de kaart.
+- **Thijmen | [MrSmarto](https://github.com/MrSmarto)**: Tech-student, verantwoordelijk voor de technische ontwikkeling.
+- **Shawn | [shawnroy2](https://github.com/shawnroy2)**: Tech-student, verantwoordelijk voor de technische ontwikkeling.
+- **Kars | [karshoutman](https://github.com/karshoutman)**: Visual-student, verantwoordelijk voor de visuele aspecten van de kaart.
 
 ## Technologieën
 
