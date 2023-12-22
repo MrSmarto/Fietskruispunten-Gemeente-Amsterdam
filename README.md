@@ -16,15 +16,15 @@ Als onderdeel van onze minor hebben wij, een groep studenten met een technische 
 - **Shawn | [shawnroy2](https://github.com/shawnroy2)**: Tech-student, verantwoordelijk voor de technische ontwikkeling.
 - **Kars | [karshoutman](https://github.com/karshoutman)**: Visual-student, verantwoordelijk voor de visuele aspecten van de kaart.
 
-## Technologieën
-
 ## Technologieën Gebruikt
+
+#### Technisch
 - Svelte
 - JavaScript (ES6), HTML, CSS
 - Leaflett
 - Additionele bibliotheken en tools voor datahandeling en kaartvisualisatie
 
-#### Vormgeving
+#### Vizueel
 - Figma
 - Illustrator
 - Canva
