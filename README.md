@@ -1,38 +1,43 @@
-# create-svelte
+# Fietskruispunten Project - Gemeente Amsterdam
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+## Overzicht
+Dit project is het culminatiepunt van onze minor Information Design, waarbij we, Thijmen, Kars en Shawn, samenwerken aan een interactieve kaart voor de Gemeente Amsterdam. De kaart zal de drukte op de fietskruispunten binnen de stad visualiseren en is bedoeld om bewoners en bezoekers van Amsterdam inzicht te geven in het fietsverkeer.
 
-## Creating a project
+## Projectbeschrijving
+Als onderdeel van onze minor hebben wij, een groep studenten met een technische of visuele specialisatie, onze krachten gebundeld om een interactieve kaart te ontwikkelen. De kaart, momenteel gehost op [Gemeente Amsterdam Fietskruispunten](https://maps.amsterdam.nl/fietskruispunten/), zal verrijkt worden met realtime data om de drukte van fietsverkeer op verschillende kruispunten weer te geven.
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Doelstellingen
+- Integratie van realtime fietsdrukte data op de kaart.
+- Ontwikkeling van een interactieve en gebruiksvriendelijke interface.
+- Visualisatie van complexe data op een manier die zowel technisch als visueel studenten aanspreekt.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+### Teamleden
+- **Thijmen**: Tech-student, verantwoordelijk voor de technische ontwikkeling.
+- **Shawn**: Tech-student, werkt samen met Thijmen aan de technische aspecten.
+- **Kars**: Visual-student, verantwoordelijk voor de visuele aspecten van de kaart.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Technologieën
+- Svelte
+- JavaScript (ES6)
+- HTML
+- CSS
+- Aanvullende bibliotheken en frameworks die nodig zijn voor ontwikkeling.
 
-## Developing
+## Contactpersoon bij de Gemeente Amsterdam
+- **Sjoerd**: Sjoerd is onze schakel binnen de Gemeente Amsterdam en levert ons de nodige data en ondersteuning voor dit project.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Gebruik van de Repository
+Deze repository bevat alle broncode en resources die nodig zijn voor het project. Instructies voor het opzetten van de ontwikkelomgeving en het draaien van de applicatie zullen worden verstrekt in de documentatie.
 
-```bash
-npm run dev
+### Installatie
+(Deze sectie zal instructies bevatten over het klonen van de repository en het lokaal draaien van de applicatie.)
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+### Bijdragen
+Bijdragen aan dit project is beperkt tot teamleden. Als je suggesties of feedback hebt, open dan een issue in de repository of neem contact op met een van de teamleden.
 
-## Building
+## Licentie
+(Deze sectie zal informatie bevatten over de licentie van het project, indien van toepassing.)
 
-To create a production version of your app:
+---
 
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Dit project wordt met passie ontwikkeld door Thijmen, Kars en Shawn, in samenwerking met de Gemeente Amsterdam en in het kader van onze minor Information Design.
