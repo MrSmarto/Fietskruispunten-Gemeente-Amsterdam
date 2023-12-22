@@ -1,7 +1,7 @@
 # Projectnaam: Fietskruispunten Gemeente Amsterdam
 
 ## Overzicht
-Dit project is het eind project van onze minor Information Design, waarbij we, Thijmen, Kars en Shawn, samenwerken aan een interactieve kaart voor de Gemeente Amsterdam. De kaart zal de drukte op de fietskruispunten binnen de stad visualiseren en is bedoeld om specialisten en geintresseerde van de Amsterdam inzicht te geven in het fietsverkeer.
+Dit project is het eind project van onze minor Information Design, waarbij we, Thijmen, Kars en Shawn, samenwerken aan een interactieve kaart voor de Gemeente Amsterdam. De kaart zal de drukte op de fietskruispunten binnen de stad visualiseren en is bedoeld om specialisten en geïnteresseerden van Amsterdam inzicht te geven in het fietsverkeer.
 
 ## Projectbeschrijving
 Als onderdeel van onze minor hebben wij, een groep studenten met een technische of visuele specialisatie, samen gaan werken om een interactieve kaart te ontwikkelen. De kaart, momenteel gehost op [Gemeente Amsterdam Fietskruispunten](https://maps.amsterdam.nl/fietskruispunten/), zal uitgebreid worden met echte realtime data om de drukte van fietsverkeer op verschillende kruispunten weer te geven.
@@ -21,10 +21,10 @@ Als onderdeel van onze minor hebben wij, een groep studenten met een technische 
 #### Technisch
 - Svelte
 - JavaScript (ES6), HTML, CSS
-- Leaflett
+- Leaflet
 - Additionele bibliotheken en tools voor datahandeling en kaartvisualisatie
 
-#### Vizueel
+#### Visueel
 - Figma
 - Illustrator
 - Canva
@@ -36,6 +36,11 @@ Als onderdeel van onze minor hebben wij, een groep studenten met een technische 
 Deze repository bevat alle broncode en resources die nodig zijn voor het project. Instructies voor het opzetten van de ontwikkelomgeving en het draaien van de applicatie zullen worden uitgelegd in de documentatie.
 
 ## Live Demo
+
+Bekijk de live demo van het project hier:
+- **Live URL:** [Fietskruispunten Gemeente Amsterdam](https://fietskruispunten-gemeente-amsterdam.vercel.app/)
+
+Het project is gedeployed via Vercel, wat automatische deploys mogelijk maakt bij elke push naar de hoofdbranch van deze repository. Dit zorgt voor een naadloze integratie tussen ontwikkeling en deployment, en maakt het makkelijk om updates snel uit te rollen.
 
 ## Installatie en Gebruik
 
