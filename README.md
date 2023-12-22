@@ -12,9 +12,9 @@ Als onderdeel van onze minor hebben wij, een groep studenten met een technische 
 - Visualisatie van complexe data op een manier die zowel technisch als visueel studenten aanspreekt.
 
 ### Teamleden
-- **Thijmen**: Tech-student, verantwoordelijk voor de technische ontwikkeling.
-- **Shawn**: Tech-student, verantwoordelijk voor de technische ontwikkeling.
-- **Kars**: Visual-student, verantwoordelijk voor de visuele aspecten van de kaart.
+- [MrSmarto](https://github.com/MrSmarto): **Thijmen**: Tech-student, verantwoordelijk voor de technische ontwikkeling.
+- [shawnroy2](https://github.com/shawnroy2): **Shawn**: Tech-student, verantwoordelijk voor de technische ontwikkeling.
+- [karshoutman](https://github.com/karshoutman): **Kars**: Visual-student, verantwoordelijk voor de visuele aspecten van de kaart.
 
 ## Technologieën
 
@@ -73,19 +73,6 @@ Open je webbrowser en ga naar `http://localhost:3000` om de applicatie te bekijk
 - Interacteer met de kaart om in te zoomen op specifieke gebieden.
 - Gebruik de overlay om de fietsdrukte van verschillende momenten te bekijken.
 
-## Team
-
-* Teamlid 1: Thijmen
-- Rol: Tech-student, verantwoordelijk voor de technische implementatie
-- GitHub-handle: [MrSmarto](https://github.com/MrSmarto)
-
-* Teamlid 2: Shawn
-- Rol: Tech-student, verantwoordelijk voor de technische implementatie
-- GitHub-handle: [shawnroy2](https://github.com/shawnroy2)
-
-* Teamlid 3: Kars
-- Rol: Visual-student, verantwoordelijk voor de vizuele implementatie
-- GitHub-handle: [karshoutman](https://github.com/karshoutman)
 
 ## Licentie
 Dit project is gelicenseerd onder de MIT License - zie het LICENSE-bestand voor details.
