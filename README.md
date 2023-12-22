@@ -17,26 +17,33 @@ Als onderdeel van onze minor hebben wij, een groep studenten met een technische 
 - **Kars**: Visual-student, verantwoordelijk voor de visuele aspecten van de kaart.
 
 ## Technologieën
+
+#### Technisch
 - Svelte
 - JavaScript (ES6)
 - HTML
 - CSS
 - Aanvullende bibliotheken en frameworks die nodig zijn voor ontwikkeling.
 
+#### Vormgeving
+- Figma
+- Illustrator
+- Canva
+
 ## Contactpersoon bij de Gemeente Amsterdam
 - **Sjoerd**: Sjoerd is onze schakel binnen de Gemeente Amsterdam en levert ons de nodige data en ondersteuning voor dit project.
 
 ## Gebruik van de Repository
-Deze repository bevat alle broncode en resources die nodig zijn voor het project. Instructies voor het opzetten van de ontwikkelomgeving en het draaien van de applicatie zullen worden verstrekt in de documentatie.
+Deze repository bevat alle broncode en resources die nodig zijn voor het project. Instructies voor het opzetten van de ontwikkelomgeving en het draaien van de applicatie zullen worden uitgelegd in de documentatie.
 
 ### Installatie
-(Deze sectie zal instructies bevatten over het klonen van de repository en het lokaal draaien van de applicatie.)
+(Hier de uitleg over hoe te gebruiken/installeren)
 
 ### Bijdragen
 Bijdragen aan dit project is beperkt tot teamleden. Als je suggesties of feedback hebt, open dan een issue in de repository of neem contact op met een van de teamleden.
 
 ## Licentie
-(Deze sectie zal informatie bevatten over de licentie van het project, indien van toepassing.)
+MIT Lecensie
 
 ---
 
