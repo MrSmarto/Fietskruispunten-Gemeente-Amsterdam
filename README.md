@@ -1,19 +1,19 @@
 # Fietskruispunten Project - Gemeente Amsterdam
 
 ## Overzicht
-Dit project is het culminatiepunt van onze minor Information Design, waarbij we, Thijmen, Kars en Shawn, samenwerken aan een interactieve kaart voor de Gemeente Amsterdam. De kaart zal de drukte op de fietskruispunten binnen de stad visualiseren en is bedoeld om bewoners en bezoekers van Amsterdam inzicht te geven in het fietsverkeer.
+Dit project is het eind project van onze minor Information Design, waarbij we, Thijmen, Kars en Shawn, samenwerken aan een interactieve kaart voor de Gemeente Amsterdam. De kaart zal de drukte op de fietskruispunten binnen de stad visualiseren en is bedoeld om specialisten en geintresseerde van de Amsterdam inzicht te geven in het fietsverkeer.
 
 ## Projectbeschrijving
-Als onderdeel van onze minor hebben wij, een groep studenten met een technische of visuele specialisatie, onze krachten gebundeld om een interactieve kaart te ontwikkelen. De kaart, momenteel gehost op [Gemeente Amsterdam Fietskruispunten](https://maps.amsterdam.nl/fietskruispunten/), zal verrijkt worden met realtime data om de drukte van fietsverkeer op verschillende kruispunten weer te geven.
+Als onderdeel van onze minor hebben wij, een groep studenten met een technische of visuele specialisatie, samen gaan werken om een interactieve kaart te ontwikkelen. De kaart, momenteel gehost op [Gemeente Amsterdam Fietskruispunten](https://maps.amsterdam.nl/fietskruispunten/), zal uitgebreid worden met echte realtime data om de drukte van fietsverkeer op verschillende kruispunten weer te geven.
 
 ### Doelstellingen
-- Integratie van realtime fietsdrukte data op de kaart.
+- Integratie van echte realtime fietsdrukte data op de kaart.
 - Ontwikkeling van een interactieve en gebruiksvriendelijke interface.
 - Visualisatie van complexe data op een manier die zowel technisch als visueel studenten aanspreekt.
 
 ### Teamleden
 - **Thijmen**: Tech-student, verantwoordelijk voor de technische ontwikkeling.
-- **Shawn**: Tech-student, werkt samen met Thijmen aan de technische aspecten.
+- **Shawn**: Tech-student, verantwoordelijk voor de technische ontwikkeling.
 - **Kars**: Visual-student, verantwoordelijk voor de visuele aspecten van de kaart.
 
 ## Technologieën
