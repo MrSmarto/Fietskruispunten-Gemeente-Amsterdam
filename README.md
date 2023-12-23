@@ -1,5 +1,7 @@
 # Projectnaam: Fietskruispunten Gemeente Amsterdam
 
+![2](https://github.com/MrSmarto/Fietskruispunten-Gemeente-Amsterdam/assets/118122875/53bfc1d0-8720-4c83-9f77-7e82a85bf27c)
+
 ## Overzicht
 Dit project is het eind project van onze minor Information Design, waarbij we, Thijmen, Kars en Shawn, samenwerken aan een interactieve kaart voor de Gemeente Amsterdam. De kaart zal de drukte op de fietskruispunten binnen de stad visualiseren en is bedoeld om specialisten en geïnteresseerden van Amsterdam inzicht te geven in het fietsverkeer.
 
