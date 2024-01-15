@@ -1,9 +1,10 @@
 <script>
   import { onMount } from "svelte";
-
   import MapComponent from "../components/map.svelte";
 
   let map;
+  let lightLayer;
+  let darkLayer;
   let isDarkMode = false;
 
   onMount(async () => {
@@ -14,26 +15,54 @@
 
       map = L.map("map").setView([52.3676, 4.9041], 13);
 
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 18,
-        attribution: "© OpenStreetMap contributors",
-      }).addTo(map);
+      lightLayer = L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+          maxZoom: 18,
+          attribution: "© OpenStreetMap contributors",
+        }
+      ).addTo(map);
+
+      darkLayer = L.tileLayer(
+        "https://{s}.tile.darkmatter.map-cdn.com/{z}/{x}/{y}.png",
+        {
+          maxZoom: 18,
+          attribution:
+            "Map tiles by CartoDB, under CC BY 3.0. Data by OpenStreetMap, under ODbL.",
+        }
+      );
     }
   });
 
   function toggleDarkMode() {
-    isDarkMode = !isDarkMode;
-    const mapElement = document.getElementById("map");
-    mapElement.style.backgroundColor = isDarkMode ? "black" : "";
+    if (map) {
+      if (map.hasLayer(lightLayer)) {
+        map.removeLayer(lightLayer);
+        map.addLayer(darkLayer);
+        isDarkMode = true; // update de status
+      } else {
+        map.removeLayer(darkLayer);
+        map.addLayer(lightLayer);
+        isDarkMode = false; // update de status
+      }
+    } else {
+      console.error("Map is not initialized");
+    }
   }
 </script>
 
-<!-- Bevat de Leaflet-kaart. -->
 <MapComponent />
 
-<button on:click={toggleDarkMode}>Toggle Dark Mode</button>
+<button class="mode-toggle" on:click={toggleDarkMode}
+  class:dark-mode={isDarkMode}>Kaartlaag: {isDarkMode ? "Verander naar licht" : "Verander naar donker"}</button>
 
-<!-- De styling van alle componenten -->
+
 <style>
   @import "../styles/global.css";
+
+  .mode-toggle {
+    /* Overige stijlen van .dark-mode-toggle */
+    background-color: var(--button-active-color, #fff);
+    color: var(--button-active-text, #000);
+  }
 </style>
