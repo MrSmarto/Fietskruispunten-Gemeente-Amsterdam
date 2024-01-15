@@ -29,5 +29,5 @@
 
 <!-- De styling van alle componenten -->
 <style>
-  @import "../styles/Global.css";
+  @import "../styles/global.css";
 </style>
