@@ -1,0 +1,4 @@
+#mapid { 
+    height: 100vh; /* Maak de kaart volledige vensterhoogte */
+    width: 100vw; /* Maak de kaart volledige vensterbreedte */
+}
