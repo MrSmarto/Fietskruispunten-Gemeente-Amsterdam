@@ -1,31 +1,37 @@
 <script>
   import { onMount } from "svelte";
 
-  let map;
+  import MapComponent from "../components/map.svelte";
 
-  // Functie die uitgevoerd wordt zodra de component is gemount in de DOM
+  let map;
+  let isDarkMode = false;
+
   onMount(async () => {
     if (typeof window !== "undefined") {
-      // Dynamisch importeren van Leaflet en de bijbehorende CSS
       const leaflet = await import("leaflet");
       const L = leaflet.default;
       await import("leaflet/dist/leaflet.css");
 
-      // Initialisatie van de Leaflet-kaart
-      map = L.map("map").setView([52.1326, 5.2913], 7); // Coördinaten en zoomniveau voor Nederland
+      map = L.map("map").setView([52.3676, 4.9041], 13);
 
-      // Voeg een standaard tileLayer toe
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
+        maxZoom: 18,
         attribution: "© OpenStreetMap contributors",
       }).addTo(map);
     }
   });
+
+  function toggleDarkMode() {
+    isDarkMode = !isDarkMode;
+    const mapElement = document.getElementById("map");
+    mapElement.style.backgroundColor = isDarkMode ? "black" : "";
+  }
 </script>
 
-<!-- De kaart container -->
-<div id="map" style="width: 100%; height: 700px;"></div>
+<!-- Bevat de Leaflet-kaart. -->
+<MapComponent />
 
+<button on:click={toggleDarkMode}>Toggle Dark Mode</button>
 
 <!-- De styling van alle componenten -->
 <style>
