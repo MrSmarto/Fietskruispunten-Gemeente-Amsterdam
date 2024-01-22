@@ -1,29 +1,2 @@
-#map {
- height: 100vh;
- width: 100vw;
- position: relative; /* Maak de kaartcontainer relatief gepositioneerd */
-}
 
-
-.mode-toggle {
-    /* Overige stijlen van .dark-mode-toggle */
-    background-color: var(--button-active-color, #fff);
-    color: var(--button-active-text, #000);
-    position: absolute; /* Absolute positionering ten opzichte van de kaartcontainer */
-    top: 20px; /* Positie vanaf de bovenkant van de kaartcontainer */   
-    right: 20px; /* Positie vanaf de rechterkant van de kaartcontainer */
-    z-index: 400; /* Zorg dat de knop boven de kaartlaag ligt */
-    padding: 10px 20px; /* Padding voor een groter klikgebied en esthetiek */
-    background-color: #fff; /* Achtergrondkleur van de knop */
-    border: none; /* Verwijder de rand */
-    cursor: pointer; /* Cursor stijl */
-    border-radius: 5px; /* Afgeronde hoeken */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Schaduw voor betere zichtbaarheid */
-    font-size: 1em; /* Lettergrootte */
-}
-
-.mode-toggle.dark-mode {
-    background-color: #000;
-    color: #fff;
-  }
 

@@ -53,16 +53,7 @@
 
 <MapComponent />
 
-<button class="mode-toggle" on:click={toggleDarkMode}
-  class:dark-mode={isDarkMode}>Kaartlaag: {isDarkMode ? "Verander naar licht" : "Verander naar donker"}</button>
-
 
 <style>
   @import "../styles/global.css";
-
-  .mode-toggle {
-    /* Overige stijlen van .dark-mode-toggle */
-    background-color: var(--button-active-color, #fff);
-    color: var(--button-active-text, #000);
-  }
 </style>
