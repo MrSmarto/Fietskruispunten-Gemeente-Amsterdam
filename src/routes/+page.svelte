@@ -3,9 +3,7 @@
   import MapComponent from "../components/map.svelte";
 
   let map;
-  let lightLayer;
-  let darkLayer;
-  let isDarkMode = false;
+
 
   onMount(async () => {
     if (typeof window !== "undefined") {
@@ -34,21 +32,6 @@
     }
   });
 
-  function toggleDarkMode() {
-    if (map) {
-      if (map.hasLayer(lightLayer)) {
-        map.removeLayer(lightLayer);
-        map.addLayer(darkLayer);
-        isDarkMode = true; // update de status
-      } else {
-        map.removeLayer(darkLayer);
-        map.addLayer(lightLayer);
-        isDarkMode = false; // update de status
-      }
-    } else {
-      console.error("Map is not initialized");
-    }
-  }
 </script>
 
 <MapComponent />
