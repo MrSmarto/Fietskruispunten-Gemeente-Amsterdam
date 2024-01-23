@@ -23,6 +23,10 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"leaflet": "^1.9.4"
+		"d3": "^7.8.5",
+		"gsap": "^3.12.5",
+		"just-flush": "^2.3.0",
+		"leaflet": "^1.9.4",
+		"sass": "^1.70.0"
 	}
 }
