@@ -38,7 +38,7 @@
           return { 
             color: geofietspuntencolors(feature.properties.Layer), // Kleur van de lijn
             fillColor: geofietspuntencolors(feature.properties.Layer), // Vulkleur
-            fillOpacity: 1, // Dekking van de vulkleur
+            fillOpacity: 0.9, // Dekking van de vulkleur
             weight: 0.5 // Dikte van de lijn
           };
         }
@@ -51,7 +51,7 @@
   });
 </script>
 
-<div id="map" style="height: 100vh;"></div>
+<MapComponent></MapComponent>
 
 <style>
   @import "../styles/global.css";
