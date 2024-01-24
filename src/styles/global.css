@@ -1,4 +1,34 @@
+/* ROOT */
+
+:root {
+    --navbar-height: 105px; /* Bestaande hoogte van de .header */
+  }
+  
+
+/* STANDAARD */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    /* Zorg voor een consistent lettertype en basisinstellingen over de hele app */
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+  
+
 /* NAVBAR COMPONENT */
+
+.navbar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: white;
+    z-index: 1000; /* Zorgt ervoor dat de navbar boven andere content staat */
+}
 
 
 .header {
@@ -7,6 +37,33 @@
     align-items: center;
     padding: 1rem;
     font-family: "Open Sans", sans-serif;
+    z-index: 10000;
+    background: white;
+  }
+
+  .active {
+    color: red;
+  }
+
+  span:hover {
+    cursor: pointer;
+    color: red;
+  }
+
+  .nav-links button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    padding: 10px 0 10px 0;
+    margin: 0 1rem;
+    z-index: 1000;
+  }
+  .nav-links button:hover, .nav-links button:active, .nav-links button:focus, .nav-links button.active {
+    color: red;
+    outline: none;
+    z-index: 1000;
   }
 
   .logo-title-container {
@@ -33,7 +90,10 @@
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
     font-weight: bold;
-  }
+    z-index: 10100; /* Zorg ervoor dat dit ten minste zo hoog is als de .header z-index */
+    position: relative; /* z-index werkt alleen op positioned elements (niet static) */
+}
+
 
   .nav-links a {
     text-decoration: none;
@@ -49,3 +109,30 @@
     color: red;
   }
 
+/* MAP */
+
+/* OVERLAY */
+.overlay {
+    position: fixed;
+    top: var(--navbar-height); /* Begin direct onder de navigatiebalk */
+    left: 0;
+    width: 100%;
+    background-color: white; /* Volledig witte achtergrond */
+    transition: opacity 2s ease; /* Langzaam openen en sluiten */
+    opacity: 0; /* Begint onzichtbaar */
+  }
+  
+  .overlay-visible {
+    opacity: 1; /* Wordt volledig zichtbaar */
+    height: calc(100% - var(--navbar-height)); /* Hoogte aanpassen aan navbar */
+  }
+  
+  #map {
+    height: calc(100vh - var(--navbar-height)); /* Zorg dat de kaart onder de navbar start */
+    margin-top: 0px;
+  }
+  
+  .map-hidden {
+    display: none;
+  }
+  
