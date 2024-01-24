@@ -1,8 +1,7 @@
 <script>
   import { onMount } from "svelte";
-  import MapComponent from "../components/map.svelte";
   import { geofietspuntencolors } from "../utils/geocolors.js"; // Zorg dat dit pad correct is
-  import Navbar from '../components/Navbar.svelte';
+  import Navbar from "../components/Navbar.svelte";
 
   let map;
 
@@ -28,7 +27,9 @@
 
       // Voeg de GeoJSON-overlay toe
       try {
-        const response = await fetch("/data/fietskruispunten_nieuwe_situatie.geojson"); // Zorg ervoor dat dit pad correct is
+        const response = await fetch(
+          "/data/fietskruispunten_nieuwe_situatie.geojson"
+        ); // Zorg ervoor dat dit pad correct is
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -36,11 +37,11 @@
 
         // Functie om de stijl van de GeoJSON-laag te bepalen
         function style(feature) {
-          return { 
+          return {
             color: geofietspuntencolors(feature.properties.Layer), // Kleur van de lijn
             fillColor: geofietspuntencolors(feature.properties.Layer), // Vulkleur
             fillOpacity: 0.9, // Dekking van de vulkleur
-            weight: 0.5 // Dikte van de lijn
+            weight: 0.5, // Dikte van de lijn
           };
         }
 

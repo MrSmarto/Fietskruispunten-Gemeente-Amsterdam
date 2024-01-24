@@ -1,2 +1,51 @@
+/* NAVBAR COMPONENT */
 
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    font-family: "Open Sans", sans-serif;
+  }
+
+  .logo-title-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    height: 35px;
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-left: 2.5rem;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #f1f1f1;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #000;
+    padding: 0.5rem 1rem;
+    transition:
+      color 0.3s,
+      background-color 0.3s;
+    margin-right: 1rem; /* Voegt ruimte toe tussen elk item */
+  }
+
+  .nav-links a:hover {
+    color: red;
+  }
 
