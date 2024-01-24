@@ -15,7 +15,7 @@
   <a href="/herontworpen">Herontworpen kruispunten</a>
   <a href="/opvallende">Opvallende kruispunten</a>
   <a href="/herontwerpVRI">Herontwerp VRI</a>
-  <a href="/kaart">Kaart</a>
+  <a href="/map">Kaart</a>
 </div>
 
 <style>
