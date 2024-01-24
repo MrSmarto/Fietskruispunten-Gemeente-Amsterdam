@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { geofietspuntencolors } from "../utils/geocolors.js"; // Zorg dat dit pad correct is
-  import Navbar from "../components/Navbar.svelte";
+  import Navbar from "../components/Navbar.svelte.js";
 
   let map;
 
