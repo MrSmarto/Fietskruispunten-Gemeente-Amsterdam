@@ -11,7 +11,7 @@
 
 <!-- Navbar.svelte -->
 <div class="nav-links">
-  <a href="/">Home</a>
+  <a href ="/">Home</a>
   <a href="/herontworpen">Herontworpen kruispunten</a>
   <a href="/opvallende">Opvallende kruispunten</a>
   <a href="/herontwerpVRI">Herontwerp VRI</a>

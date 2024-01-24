@@ -1,7 +1,24 @@
-<script>
-  import Navbar from "../components/Navbar.svelte";
-</script>
+<div class="header">
+  <div class="logo-title-container">
+    <img
+      src="../fotos/nav/logo-gemeente.png"
+      alt="Gemeente Amsterdam Logo"
+      class="logo"
+    />
+    <span class="title">Fietskruispunten</span>
+  </div>
+</div>
 
-<Navbar />
+<!-- Navbar -->
+<div class="nav-links">
+  <a href="/">Home</a>
+  <a href="/herontworpen">Herontworpen kruispunten</a>
+  <a href="/opvallende">Opvallende kruispunten</a>
+  <a href="/herontwerpVRI">Herontwerp VRI</a>
+  <a href="/map">Kaart</a>
+</div>
 
-<!-- De rest van de pagina-inhoud... -->
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+  @import "../styles/global.css";
+</style>
