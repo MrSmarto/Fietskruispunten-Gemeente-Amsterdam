@@ -138,8 +138,23 @@ html, body {
 
   /* VIZUALISATIE */
   
+  #viz-container {
+    position: fixed; /* Zorg ervoor dat deze altijd onderaan het scherm blijft */
+    bottom: 0; /* Aan de onderkant van het scherm */
+    left: 50%; /* Start vanaf 50% van de linkerkant van het scherm */
+    transform: translateX(-50%); /* Verschuif naar links om te centreren */
+    width: 65%; /* Breedte van de container is 70% van de viewport */
+    height: 20vh; /* Hoogte van de container is 20% van de viewport hoogte */
+    background-color: white; /* Witte achtergrond voor de container */
+    display: flex; /* Gebruik flexbox voor centreren */
+    justify-content: center; /* Centreer horizontaal */
+    align-items: center; /* Centreer verticaal */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Een subtiele schaduw boven de container */
+    z-index: 500; /* Zorg ervoor dat het boven de kaart staat maar onder de overlay */
+  }
+  
+
   #chart-container {
-    position: relative;
-    height: 100vh;
-    text-align: center;
+    width: 70%; /* 70% van de breedte van de viz-container */
+    height: none !important; /* Specificeert een vaste hoogte */
   }

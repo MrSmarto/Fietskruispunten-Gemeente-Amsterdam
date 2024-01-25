@@ -53,7 +53,7 @@
 </script>
 
 <Navbar />
-<Hoofdvizualisatie />
+
 
 {#if $overlayStatus}
   <div
@@ -79,6 +79,8 @@
     {/if}
   </div>
 {/if}
+
+<Hoofdvizualisatie />
 
 <div id="map" class={$overlayStatus ? "map-hidden" : ""}></div>
 
