@@ -4,6 +4,7 @@
   import Navbar from "../components/Navbar.svelte";
   import HerontworpenOverlay from "../components/HerontworpenOverlay.svelte";
   import HomeOverlay from "../components/HomeOverlay.svelte";
+  import Hoofdvizualisatie from "../components/Hoofdvizualisatie.svelte";
   import OpvallendeOverlay from "../components/OpvallendeOverlay.svelte";
   import { geofietspuntencolors } from "../utils/geocolors.js";
 
@@ -52,6 +53,7 @@
 </script>
 
 <Navbar />
+<Hoofdvizualisatie />
 
 {#if $overlayStatus}
   <div

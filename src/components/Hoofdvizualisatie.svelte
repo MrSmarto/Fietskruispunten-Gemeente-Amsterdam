@@ -1,29 +1,20 @@
 <script>
-  import { onMount } from "svelte";
-  import * as d3 from "d3";
+  import { onMount, afterUpdate } from 'svelte';
+  import * as d3 from 'd3';
+  import dataset from '../public/data/data2021.json';
 
-  let dataset = [];
-  let uurdata2021 = [];
   let selectedDatum;
   let x, y, height;
-  let svg;
-  let circles = [];
   let bars;
+  let circles;
   let dateRect;
   let properties = ["2202", "2402", "2602", "2802"];
   let clickedDatum;
-
-  async function loadData() {
-    const datasetResponse = await fetch("/data/data2021.json");
-    dataset = await datasetResponse.json();
-    const uurdataResponse = await fetch("/data/uurdata2021.json");
-    uurdata2021 = await uurdataResponse.json();
-    createChart();
-  }
+  let svg;
 
   function createChart() {
     if (!dataset || dataset.length === 0) {
-      console.error("Dataset is leeg of ongedefinieerd.");
+      console.error('Dataset is leeg of ongedefinieerd.');
       return;
     }
 
@@ -31,129 +22,159 @@
     const width = 1400 - margin.left - margin.right;
     height = 300 - margin.top - margin.bottom;
 
-    const container = d3
-      .select("#chart-container")
-      .style("position", "relative")
-      .style("height", "100vh")
-      .style("text-align", "center");
+    const container = d3.select('#chart-container')
+      .style('position', 'relative')
+      .style('height', '100vh')
+      .style('text-align', 'center');
 
-    svg = container
-      .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`);
+    svg = container.append('svg')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+      .style('position', 'absolute')
+      .style('bottom', 0)
+      .style('left', '50%')
+      .style('transform', 'translateX(-50%)');
 
     x = d3
       .scaleBand()
-      .domain(dataset.map((d) => d.datum))
+      .domain(dataset.map(d => d.datum))
       .range([0, width])
       .padding(0.1);
 
-    y = d3
-      .scaleLinear()
-      .domain([0, d3.max(dataset, (d) => d.totaal)])
-      .range([height, 0]);
+    y = d3.scaleLinear().domain([0, d3.max(dataset, d => d.totaal)]).range([height, 0]);
 
     bars = svg
-      .selectAll("rect")
+      .selectAll('rect')
       .data(dataset)
       .enter()
-      .append("rect")
-      .attr("x", (d) => x(d.datum))
-      .attr("width", x.bandwidth())
-      .attr("y", (d) => y(d.totaal))
-      .attr("height", (d) => height - y(d.totaal))
-      .attr("fill", "steelblue")
-      .on("mouseover", handleMouseOver)
-      .on("mouseout", handleMouseOut)
-      .on("click", handleClick);
-
-    // Additionele visualisatie-elementen zoals circles en dateRect kunnen hier geïnitialiseerd worden
-  }
-
-  function handleMouseOver(datum, element) {
-    selectedDatum = datum;
-    d3.select(element)
-      .attr("fill", "orange")
-      .attr("height", height - y(datum.totaal) + 5);
-
-    dateRect.transition().duration(200).style("opacity", 0.9);
-    const dateValue = datum.datum !== undefined ? datum.datum : "N/A";
-    const totalValue = datum.totaal !== undefined ? datum.totaal : "N/A";
-    dateRect.html(`Datum: ${dateValue}<br>Totaal: ${totalValue}`);
-
-    // Laat de cirkels zien met een overgang van rood naar groen
-    circles.forEach((circle, index) => {
-      const value = datum[properties[index]];
-      const normalizedValue =
-        value / d3.max(dataset, (d) => d[properties[index]]); // Normaliseer de waarde
-      const interpolatedColor = d3.interpolate("green", "red")(normalizedValue);
-      const radius = Math.sqrt(value);
-
-      circle
-        .style("background-color", interpolatedColor)
-        .style("width", `${2 * radius}px`)
-        .style("height", `${2 * radius}px`)
-        .style("opacity", 1);
-    });
-
-    updateChart();
-  }
-
-  function handleMouseOut(datum, element) {
-    selectedDatum = null;
-    d3.select(element)
-      .attr("fill", "steelblue")
-      .attr("height", (d) => height - y(d.totaal));
-
-    updateChart();
-  }
-
-  function handleClick(datum) {
-    clickedDatum = datum;
-
-    // Remove existing bars
-    bars.remove();
-
-    // Draw new bars with the dataset for the clicked day
-    const newData = getNewDataForClickedDatum(datum);
-
-    x.domain(newData.map((d) => d.datum));
-    y.domain([0, d3.max(newData, (d) => d.totaal)]);
-
-    // Add new bars
-    bars = svg
-      .selectAll("rect")
-      .data(newData)
-      .enter()
-      .append("rect")
-      .attr("x", (d) => x(d.datum))
-      .attr("width", x.bandwidth())
-      .attr("y", (d) => y(d.totaal))
-      .attr("height", (d) => height - y(d.totaal))
-      .attr("fill", "steelblue")
-      .on("mouseover", function (event, datum) {
+      .append('rect')
+      .attr('x', d => x(d.datum))
+      .attr('width', x.bandwidth())
+      .attr('y', d => y(d.totaal))
+      .attr('height', d => height - y(d.totaal))
+      .attr('fill', 'grey')
+      .on('mouseover', function (event, datum) {
         handleMouseOver(datum, this);
       })
-      .on("mouseout", function (event, datum) {
+      .on('mouseout', function (event, datum) {
         handleMouseOut(datum, this);
       })
-      .on("click", function (event, datum) {
+      .on('click', function (event, datum) {
         handleClick(datum);
       });
 
-    // Update date rectangle and circles
-    updateBars();
-    updateDateRect();
-    updateCircle();
+      
+
+      circles = [];
+
+      properties.forEach((property, index) => {
+      let topPosition, leftPosition;
+
+      const squareSize = 330;
+
+      // Calculate positions to center the circles
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2 - 220;
+
+      const row = Math.floor(index / 2);
+      const col = index % 2;
+
+      topPosition = (centerY + row * squareSize - squareSize / 2) + 'px';
+      leftPosition = (centerX + col * squareSize - squareSize / 2) + 'px';
+
+      const circle = container.append('div')
+          .style('position', 'absolute')
+          .style('top', topPosition)
+          .style('left', leftPosition)
+          .style('transform', 'translateX(-50%)')
+          .style('border-radius', '50%')
+          .style('opacity', 0)
+          .style('transition', 'opacity 1s, width 0.5s, height 0.5s, background-color 0.5s')
+          .style('background-color', 'green');
+
+      circles.push(circle);
+      });
+
+    dateRect = container.append('div')
+      .style('opacity', 0)
+      .style('position', 'absolute')
+      .style('background-color', '#f0f0f0') // Light grey color
+      .style('padding', '5px')
+      .style('border', '1px solid #ccc')
+      .style('border-radius', '5px')
+      .style('width', '150px')
+      .style('height', '40px')
+      .style('left', '130px') // Positioned at the left
+      .style('top', '670px'); // Positioned 60px above the bar chart
   }
 
-  onMount(loadData);
+  function handleMouseOver(datum, element) {
+  selectedDatum = datum;
+  d3.select(element)
+      .attr('fill', 'orange')
+      .attr('height', height - y(datum.totaal) + 5);
+
+  dateRect.transition().duration(200).style('opacity', 0.9);
+  const dateValue = datum.datum !== undefined ? datum.datum : 'N/A';
+  const totalValue = datum.totaal !== undefined ? datum.totaal : 'N/A';
+  dateRect
+      .html(`Datum: ${dateValue}<br>Totaal: ${totalValue}`);
+
+  circles.forEach((circle, index) => {
+      const value = datum[properties[index]];
+      const normalizedValue = value / d3.max(dataset, d => d[properties[index]]);
+      const interpolatedColor = d3.interpolate('green', 'red')(normalizedValue);
+      const radius = Math.sqrt(value);
+
+      circle
+      .style('background-color', interpolatedColor)
+      .style('width', `${2 * radius}px`)
+      .style('height', `${2 * radius}px`)
+      .style('opacity', 0.7); // Set opacity to 50%
+  });
+
+  updateChart();
+  }
+
+
+  function handleMouseOut(datum, element) {
+  selectedDatum = null;
+  d3.select(element)
+    .attr('fill', 'grey')
+    .attr('height', d => height - y(d.totaal));
+
+  updateChart();
+}
+
+
+function updateBars() {
+    bars
+      .attr('x', d => x(d.datum))
+      .attr('width', x.bandwidth())
+      .attr('y', d => y(d.totaal))
+      .attr('height', d => height - y(d.totaal));
+  }
+
+  function updateChart() {
+    updateBars();
+  }
+
+  function updateDateRect() {
+    // Bijwerken van de datum rechthoek
+    dateRect
+      .html(`Datum: ${clickedDatum.datum}<br>Totaal: ${clickedDatum.totaal}`);
+  }
+
+  onMount(createChart);
+  afterUpdate(updateChart);
 </script>
 
-<div id="chart-container"></div>
-
 <style>
-
+  #chart-container {
+  position: relative;
+  height: 100vh;
+  text-align: center;
+}
 </style>
+
+<div id="chart-container"></div>
