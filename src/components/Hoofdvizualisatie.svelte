@@ -20,7 +20,7 @@
 
     const margin = { top: 0, right: 0, bottom: 0, left: 0 };
     const width = 700 - margin.left - margin.right;
-    height = 300 - margin.top - margin.bottom;
+    height = 120 - margin.top - margin.bottom;
 
     const container = d3
       .select("#chart-container")

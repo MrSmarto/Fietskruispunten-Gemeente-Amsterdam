@@ -120,11 +120,13 @@ html, body {
     background-color: white; /* Volledig witte achtergrond */
     transition: opacity 2s ease; /* Langzaam openen en sluiten */
     opacity: 0; /* Begint onzichtbaar */
+    z-index: 10000;
   }
   
   .overlay-visible {
     opacity: 1; /* Wordt volledig zichtbaar */
     height: calc(100% - var(--navbar-height)); /* Hoogte aanpassen aan navbar */
+    z-index: 10000;
   }
   
   #map {
@@ -155,6 +157,8 @@ html, body {
   
 
   #chart-container {
-    width: 70%; /* 70% van de breedte van de viz-container */
-    height: none !important; /* Specificeert een vaste hoogte */
-  }
+    width: 70% !important; /* Zorgt dat deze stijl voorrang krijgt */
+    margin: auto !important; /* Centreert de container */
+    position: fixed !important; /* Overschrijft de positionering */
+    bottom: 0 !important;
+}
