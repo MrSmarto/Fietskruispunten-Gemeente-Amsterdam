@@ -19,7 +19,7 @@
     }
 
     const margin = { top: 20, right: 30, bottom: 50, left: 40 };
-    const width = 1400 - margin.left - margin.right;
+    const width = 1000 - margin.left - margin.right;
     height = 300 - margin.top - margin.bottom;
 
     const container = d3.select('#chart-container')
@@ -171,10 +171,27 @@ function updateBars() {
 
 <style>
   #chart-container {
-  position: relative;
-  height: 100vh;
-  text-align: center;
-}
+    position: fixed; /* Veranderd van 'relative' naar 'fixed' */
+    bottom: 0; /* Aan de onderkant van het scherm */
+    left: 0; /* Aan de linkerkant van het scherm */
+    width: 100%; /* Volledige breedte */
+    background-color: rgba(0, 0, 0, 0); /* Witte achtergrond */
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2); /* Schaduw voor diepte */
+    z-index: 1000; /* Zorg ervoor dat het boven de kaart verschijnt */
+  }
+
+  .circle-container {
+    position: fixed; /* Veranderd van 'absolute' naar 'fixed' */
+    bottom: 0;
+    pointer-events: none; /* Zodat de kaart interactief blijft */
+  }
+
+  .circle {
+    pointer-events: auto; /* Sta interacties met de cirkels toe */
+    /* De rest van je circle styling */
+  }
 </style>
+
+
 
 <div id="chart-container"></div>

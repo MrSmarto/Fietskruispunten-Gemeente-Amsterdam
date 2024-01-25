@@ -4,8 +4,8 @@
   import Navbar from "../components/Navbar.svelte";
   import HerontworpenOverlay from "../components/HerontworpenOverlay.svelte";
   import HomeOverlay from "../components/HomeOverlay.svelte";
-  import Hoofdvizualisatie from "../components/Hoofdvizualisatie.svelte";
   import OpvallendeOverlay from "../components/OpvallendeOverlay.svelte";
+  import Hoofdvizualisatie from "../components/Hoofdvizualisatie.svelte";
   import { geofietspuntencolors } from "../utils/geocolors.js";
 
   let map;
@@ -59,6 +59,9 @@
   <div
     class="overlay {$overlayStatus ? 'overlay-visible' : ''}"
     on:click={(event) => {
+      // Voeg logica toe om te controleren of de klik buiten een bepaald gebied plaatsvindt,
+      // bijvoorbeeld door te controleren op de class van het event.target.
+      // Dit is echter complex zonder de structuur van je code te veranderen.
       overlayStatus.set(false);
     }}
     on:keydown={(event) => event.key === "Escape" && overlayStatus.set(false)}
