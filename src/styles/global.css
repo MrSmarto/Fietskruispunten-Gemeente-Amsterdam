@@ -135,4 +135,11 @@ html, body {
   .map-hidden {
     display: none;
   }
+
+  /* VIZUALISATIE */
   
+  #chart-container {
+    position: relative;
+    height: 100vh;
+    text-align: center;
+  }
