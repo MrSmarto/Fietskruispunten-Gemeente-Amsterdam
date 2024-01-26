@@ -74,11 +74,11 @@
     properties.forEach((property, index) => {
       let topPosition, leftPosition;
 
-      const squareSize = 330;
+      const squareSize = 190;
 
       // Calculate positions to center the circles
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2 - 220;
+      const centerX = window.innerWidth / 5.2;
+      const centerY = window.innerHeight / 2 - 30;
 
       const row = Math.floor(index / 2);
       const col = index % 2;
@@ -113,8 +113,9 @@
       .style("border-radius", "5px")
       .style("width", "150px")
       .style("height", "40px")
-      .style("left", "130px") // Positioned at the left
-      .style("top", "670px"); // Positioned 60px above the bar chart
+      .style("left", "-107px") // Positioned at the left
+      .style("top", "540px") // Positioned 60px above the bar chart
+      .style("z-index", "10000"); // Positioned 60px above the bar chart
   }
 
   function handleMouseOver(datum, element) {
