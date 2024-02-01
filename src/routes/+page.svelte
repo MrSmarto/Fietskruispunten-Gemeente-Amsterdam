@@ -2,11 +2,15 @@
   import { onMount } from "svelte";
   import { overlayStatus, overlayContent } from "../utils/stores.js";
   import Navbar from "../components/Navbar.svelte";
-  import HerontworpenOverlay from "../components/HerontworpenOverlay.svelte";
   import HomeOverlay from "../components/HomeOverlay.svelte";
+  import HerontworpenOverlay from "../components/HerontworpenOverlay.svelte";
   import OpvallendeOverlay from "../components/OpvallendeOverlay.svelte";
   import Hoofdvizualisatie from "../components/Hoofdvizualisatie.svelte";
   import { geofietspuntencolors } from "../utils/geocolors.js";
+
+  // Initialize the HomeOverlay on app start
+  overlayStatus.set(true);
+  overlayContent.set("home");
 
   let map;
 
@@ -18,7 +22,7 @@
 
       // De specifieke coördinaten en zoomniveau voor de initiële weergave
       const specifiekeLocatie = [52.37413259215145, 4.875108445719616];
-      const zoomNiveau = 20;
+      const zoomNiveau = 13;
 
       map = L.map("map").setView(specifiekeLocatie, zoomNiveau);
 
@@ -49,11 +53,9 @@
       }
     }
   });
-
 </script>
 
 <Navbar />
-
 
 {#if $overlayStatus}
   <div
