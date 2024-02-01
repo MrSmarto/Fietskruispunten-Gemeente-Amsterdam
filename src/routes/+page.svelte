@@ -2,11 +2,15 @@
   import { onMount } from "svelte";
   import { overlayStatus, overlayContent } from "../utils/stores.js";
   import Navbar from "../components/Navbar.svelte";
-  import HerontworpenOverlay from "../components/HerontworpenOverlay.svelte";
   import HomeOverlay from "../components/HomeOverlay.svelte";
+  import HerontworpenOverlay from "../components/HerontworpenOverlay.svelte";
   import OpvallendeOverlay from "../components/OpvallendeOverlay.svelte";
   import Hoofdvizualisatie from "../components/Hoofdvizualisatie.svelte";
   import { geofietspuntencolors } from "../utils/geocolors.js";
+
+  // Initialize the HomeOverlay on app start
+  overlayStatus.set(true);
+  overlayContent.set("home");
 
   let map;
 
@@ -49,11 +53,9 @@
       }
     }
   });
-
 </script>
 
 <Navbar />
-
 
 {#if $overlayStatus}
   <div

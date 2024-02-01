@@ -1,12 +1,26 @@
-<!-- src/components/KaartOverlay.svelte -->
+<!-- HerontworpenOverlay.svelte -->
 <script>
-  // JavaScript voor dit component, indien nodig
+  import { homeContent } from "../utils/stores.js";
+  import InfoBlock from "./InfoBlock.svelte";
+
+  let content = [];
+
+  homeContent.subscribe(($content) => {
+    content = $content.herontworpen || []; // Zorg voor een fallback
+  });
 </script>
 
-<div>
-  <p>Dit is de content voor de Kaart overlay.</p>
+<div class="overlay-content">
+  {#each content as kruispunt}
+    <InfoBlock {kruispunt} />
+  {/each}
 </div>
 
 <style>
-  /* Stijlen specifiek voor dit component */
+  .overlay-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
 </style>

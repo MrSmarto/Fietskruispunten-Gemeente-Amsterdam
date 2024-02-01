@@ -1,12 +1,27 @@
-<!-- src/components/KaartOverlay.svelte -->
+<!-- HomeOverlay.svelte -->
 <script>
-  // JavaScript voor dit component, indien nodig
+  import { homeContent } from "../utils/stores.js";
+  import HomeBlock from "./HomeBlock.svelte";
+
+  let blocks = [];
+
+  homeContent.subscribe(($content) => {
+    blocks = $content.home || []; // Zorg voor een fallback
+  });
 </script>
 
-<div>
-  <p>Dit is de content voor de Kaart overlay.</p>
+<div class="overlay-container">
+  {#each blocks as block (block.title)}
+    <HomeBlock {block} />
+  {/each}
 </div>
 
 <style>
-  /* Stijlen specifiek voor dit component */
+  .overlay-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Ruimte tussen blokken */
+    justify-content: center; /* Blokken centreren */
+    padding: 20px; /* Padding rondom de container */
+  }
 </style>
