@@ -7,8 +7,20 @@
   homeContent.subscribe(($content) => {
     blocks = $content.home || []; // Zorg voor een fallback
   });
+  import { homeContent } from "../utils/stores.js";
+  import HomeBlock from "./HomeBlock.svelte";
+
+  let blocks = [];
+
+  homeContent.subscribe(($content) => {
+    blocks = $content.home || []; // Zorg voor een fallback
+  });
 </script>
 
+<div class="overlay-container">
+  {#each blocks as block (block.title)}
+    <HomeBlock {block} />
+  {/each}
 <div class="overlay-container">
   {#each blocks as block (block.title)}
     <HomeBlock {block} />
