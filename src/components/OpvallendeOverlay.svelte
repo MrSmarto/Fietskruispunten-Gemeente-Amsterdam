@@ -1,5 +1,4 @@
 <!-- OpvallendeOverlay.svelte -->
-<!-- OpvallendeOverlay.svelte -->
 <script>
   import { homeContent } from "../utils/stores.js";
   import InfoBlock from "./InfoBlock.svelte";

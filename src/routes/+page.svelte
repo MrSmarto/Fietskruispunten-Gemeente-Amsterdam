@@ -13,6 +13,10 @@
   import Hoofdvizualisatie from "../components/Hoofdvizualisatie.svelte";
   import { geofietspuntencolors } from "../utils/geocolors.js";
 
+  // Importeer marker cluster styles en script
+  import "leaflet.markercluster/dist/MarkerCluster.css";
+  import "leaflet.markercluster/dist/MarkerCluster.Default.css";
+  import "leaflet/dist/leaflet.css";
   let map;
 
   onMount(async () => {
@@ -105,6 +109,7 @@
       }
     }
   });
+
   // Default de overlayStatus op false zodat de overlay niet direct opent. En de kaart
   // opnieuw gerenderd kan worden.
   overlayStatus.set(false);

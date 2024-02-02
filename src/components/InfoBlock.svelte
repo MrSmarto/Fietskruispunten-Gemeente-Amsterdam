@@ -29,18 +29,7 @@
   <div>
     <h3>{kruispunt.naam}</h3>
     <p>{kruispunt.beschrijving}</p>
-<button
-  class="info-block"
-  on:click={navigateToCoordinates}
-  on:keydown={handleKeydown}
-  tabindex="0"
->
-  <img src={kruispunt.image} alt={kruispunt.naam} />
-  <div>
-    <h3>{kruispunt.naam}</h3>
-    <p>{kruispunt.beschrijving}</p>
   </div>
-</button>
 </button>
 
 <style>
