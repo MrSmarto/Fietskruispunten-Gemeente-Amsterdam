@@ -158,3 +158,5 @@
   @import "../styles/global.css";
   /* Overige stijlen die je mogelijk hebt */
 </style>
+
+

@@ -6,21 +6,23 @@
   let selectedDatum = null;
   let svg;
   let bars;
-  let x, y, height, width;
+  let x, y, xAxis, yAxis, yAxisGroup;
+  let height, width;
 
   function createChart() {
     const container = d3.select("#viz-container");
-    const containerWidth = container.node().getBoundingClientRect().width - 40; // 40px padding
-    const margin = { top: 20, right: 20, bottom: 0, left: 20 }; // Verhoog de top margin voor info tekst
+    const containerWidth = container.node().getBoundingClientRect().width;
+    const containerHeight = container.node().getBoundingClientRect().height;
+    const margin = { top: 30, right: 0, bottom: 0, left: 50 };
     width = containerWidth - margin.left - margin.right;
-    height = 120 - margin.top - margin.bottom;
+    height = containerHeight - margin.top - margin.bottom - 20; // -20 voor wat witruimte
 
     svg = container
       .append("svg")
       .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom) // Verhoog de hoogte voor info tekst
+      .attr("height", height + margin.top + margin.bottom)
       .append("g")
-      .attr("transform", `translate(${margin.left},${margin.top})`); // Verschuif het grafiekgebied naar beneden
+      .attr("transform", `translate(${margin.left},${margin.top})`);
 
     x = d3
       .scaleBand()
@@ -32,6 +34,9 @@
       .scaleLinear()
       .domain([0, d3.max(dataset, (d) => d.totaal)])
       .range([height, 0]);
+
+    yAxis = d3.axisLeft(y).ticks(5);
+    yAxisGroup = svg.append("g").call(yAxis);
 
     bars = svg
       .selectAll(".bar")
@@ -47,22 +52,11 @@
       .on("mouseover", (event, d) => {
         selectedDatum = d;
         d3.select(event.target).attr("fill", "red");
-        updateInfoText(d);
       })
       .on("mouseout", (event, d) => {
         d3.select(event.target).attr("fill", "grey");
         selectedDatum = null;
-        updateInfoText(null);
       });
-
-    updateInfoText(null); // Initializeer met geen selectie
-  }
-
-  function updateInfoText(datum) {
-    const infoText = datum
-      ? `<strong>Datum:</strong> ${datum.datum}<br><strong>Totaal:</strong> ${datum.totaal}`
-      : "Hover over een bar voor details.";
-    d3.select("#info-text").html(infoText);
   }
 
   onMount(() => {
@@ -70,22 +64,57 @@
   });
 
   afterUpdate(() => {
-    updateInfoText(selectedDatum);
+    if (selectedDatum) {
+      // update logica voor info text
+    }
   });
 </script>
 
 <div
   id="viz-container"
-  style="position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 80%; height: 20vh; overflow: hidden; background-color: rgba(255, 255, 255, 0.9); border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+  style="position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 95%; height: 20vh; background-color: white; padding: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius: 10px;"
 >
   <div
-    id="info-text"
-    style="padding: 10px; text-align: left; font-size: 12px; position: absolute; top: 0; left: 20px;"
-  ></div>
+    class="controls"
+    style="position: absolute; top: 10px; left: 10px; right: 10px; height: 15%; display: flex; justify-content: space-between; align-items: center;"
+  >
+    <select id="metric-selector">
+      <option>Max aantal wachtende</option>
+      <option>Totaal aantal fietsers</option>
+      <option>Rood groen rijders</option>
+      <option>Gemiddelde wachtijd</option>
+    </select>
+    <select id="year-selector">
+      <option>2024</option>
+      <option>2023</option>
+      <option>2022</option>
+      <option>2021</option>
+      <option>2020</option>
+      <option>2019</option>
+      <option>2018</option>
+      <option>2017</option>
+      <option>2016</option>
+      <option>2015</option>
+    </select>
+    <div
+      id="info-text"
+      style="text-align: right; flex-grow: 1; padding-left: 20px;"
+    >
+      <!-- Info text zal hier automatisch geüpdatet worden -->
+    </div>
+  </div>
 </div>
 
 <style>
   .bar:hover {
     fill: red; /* Kleurt de bar rood bij hover */
+  }
+
+  #viz-container {
+    /* Container stijlen */
+  }
+
+  .controls {
+    /* Stijlen voor de dropdowns en info text */
   }
 </style>
