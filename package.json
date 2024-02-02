@@ -27,6 +27,7 @@
 		"gsap": "^3.12.5",
 		"just-flush": "^2.3.0",
 		"leaflet": "^1.9.4",
+		"leaflet.markercluster": "^1.5.3",
 		"sass": "^1.70.0"
 	}
 }

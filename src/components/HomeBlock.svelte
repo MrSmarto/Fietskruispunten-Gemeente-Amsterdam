@@ -1,11 +1,19 @@
 <script>
-  import { overlayContent, overlayStatus } from "../utils/stores.js";
+  import {
+    overlayContent,
+    overlayStatus,
+    activeMenuItem,
+  } from "../utils/stores.js";
 
   export let block;
 
   function changeOverlay() {
+    console.log("Opening Overlay:", block.overlay); // Voeg deze regel toe om te debuggen
     overlayContent.set(block.overlay);
-    overlayStatus.set(true);
+    activeMenuItem.set(block.overlay);
+    setTimeout(() => {
+      overlayStatus.set(true);
+    }, 0);
   }
 
   function handleKeydown(event) {

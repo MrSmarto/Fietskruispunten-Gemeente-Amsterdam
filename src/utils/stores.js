@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 
+export const map = writable(null);
 export const overlayStatus = writable(true); // Standaard op true voor HomeOverlay bij opstarten
 export const overlayContent = writable("home"); // Standaard op "home"
 export const activeMenuItem = writable("home"); // Active menu item op "home" bij opstarten
@@ -39,3 +40,4 @@ export const homeContent = writable({
     cordinaten: [52.370216, 4.895168],
   })),
 });
+

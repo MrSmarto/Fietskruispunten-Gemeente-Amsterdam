@@ -1,11 +1,15 @@
 <script>
-  import { overlayStatus } from "../utils/stores.js";
+  import { overlayStatus, map as mapStore } from "../utils/stores.js";
+  import { get } from "svelte/store"; // Importeer get om synchronously te lezen van een store
 
   export let kruispunt;
 
   function navigateToCoordinates() {
-    // Logic to navigate to coordinates...
     overlayStatus.set(false);
+    const map = get(mapStore); // Synchronously lees de waarde van mapStore
+    if (map) {
+      map.flyTo([52.37415834581069, 4.875057157338929], 20);
+    }
   }
 
   function handleKeydown(event) {

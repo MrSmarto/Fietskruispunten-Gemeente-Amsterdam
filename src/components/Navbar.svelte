@@ -6,19 +6,17 @@
   } from "../utils/stores.js";
 
   function handleMenuClick(item) {
-    activeMenuItem.set(item); // Update altijd het actieve menu item
-    if ($overlayContent === item && $overlayStatus) {
-      // Als hetzelfde item opnieuw wordt geklikt en de overlay is zichtbaar, sluit het
+    if ($activeMenuItem === item && $overlayStatus) {
       overlayStatus.set(false);
     } else {
-      // Anders, open de overlay met de nieuwe content
+      activeMenuItem.set(item);
       overlayContent.set(item);
       overlayStatus.set(true);
     }
   }
 </script>
 
-<div class="navbar-container">
+<nav class="navbar-container">
   <div class="header">
     <div class="logo-title-container">
       <img
@@ -35,29 +33,32 @@
       on:click={() => handleMenuClick("home")}
       class:active={$activeMenuItem === "home"}>Home</button
     >
+
     <button
       on:click={() => handleMenuClick("herontworpen")}
       class:active={$activeMenuItem === "herontworpen"}
       >Herontworpen kruispunten</button
     >
+
     <button
-      on:click={() => handleMenuClick("opvallende")}
-      class:active={$activeMenuItem === "opvallende"}
+      on:click={() => handleMenuClick("opvallend")}
+      class:active={$activeMenuItem === "opvallend"}
       >Opvallende kruispunten</button
     >
+
     <button
       on:click={() => handleMenuClick("herontwerpvri")}
       class:active={$activeMenuItem === "herontwerpvri"}>Herontwerp VRI</button
     >
   </div>
-</div>
+</nav>
 
 <style>
   @import "../styles/global.css";
   .active {
     color: red;
   }
-  span:hover {
+  .nav-links button:hover {
     cursor: pointer;
     color: red;
   }
