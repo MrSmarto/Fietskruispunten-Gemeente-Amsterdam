@@ -1,13 +1,14 @@
 <script>
   import { onMount, afterUpdate } from "svelte";
   import * as d3 from "d3";
-  import dataset from "../public/data/data2021.json"; // Zorg ervoor dat het pad correct is
+  import dataset from "../public/data/data2021.json"; // Ensure the path is correct
 
   let selectedDatum = null;
   let svg;
   let bars;
   let x, y, xAxis, yAxis, yAxisGroup;
   let height, width;
+  let hoverLine; // Variable for the horizontal guide line
 
   function createChart() {
     const container = d3.select("#viz-container");
@@ -15,7 +16,7 @@
     const containerHeight = container.node().getBoundingClientRect().height;
     const margin = { top: 30, right: 0, bottom: 0, left: 50 };
     width = containerWidth - margin.left - margin.right;
-    height = containerHeight - margin.top - margin.bottom - 20; // -20 voor wat witruimte
+    height = containerHeight - margin.top - margin.bottom - 20; // -20 for some whitespace
 
     svg = container
       .append("svg")
@@ -38,6 +39,17 @@
     yAxis = d3.axisLeft(y).ticks(5);
     yAxisGroup = svg.append("g").call(yAxis);
 
+    // Append the horizontal guide line to the SVG and make it invisible
+    hoverLine = svg
+      .append("line")
+      .attr("x1", 0)
+      .attr("x2", width)
+      .attr("y1", height)
+      .attr("y2", height)
+      .attr("stroke", "black")
+      .attr("stroke-width", 1)
+      .style("opacity", 0);
+
     bars = svg
       .selectAll(".bar")
       .data(dataset)
@@ -52,11 +64,20 @@
       .on("mouseover", (event, d) => {
         selectedDatum = d;
         d3.select(event.target).attr("fill", "red");
+        updateInfoText(selectedDatum);
       })
       .on("mouseout", (event, d) => {
         d3.select(event.target).attr("fill", "grey");
         selectedDatum = null;
+        updateInfoText(selectedDatum);
       });
+  }
+
+  function updateInfoText(datum) {
+    const infoText = datum
+      ? `<strong>Datum:</strong> ${datum.datum}<br><strong>Totaal:</strong> ${datum.totaal}`
+      : "Hover over een bar voor details.";
+    d3.select("#info-text").html(infoText);
   }
 
   onMount(() => {
@@ -64,9 +85,7 @@
   });
 
   afterUpdate(() => {
-    if (selectedDatum) {
-      // update logica voor info text
-    }
+    updateInfoText(selectedDatum);
   });
 </script>
 
@@ -76,7 +95,7 @@
 >
   <div
     class="controls"
-    style="position: absolute; top: 10px; left: 10px; right: 10px; height: 15%; display: flex; justify-content: space-between; align-items: center;"
+    style="position: absolute; top: 10px; left: 10px; width: 95%; display: flex; justify-content: start; align-items: center;"
   >
     <select id="metric-selector">
       <option>Max aantal wachtende</option>
@@ -84,37 +103,62 @@
       <option>Rood groen rijders</option>
       <option>Gemiddelde wachtijd</option>
     </select>
-    <select id="year-selector">
+    <select id="year-selector" style="margin-left: 15px;">
       <option>2024</option>
       <option>2023</option>
       <option>2022</option>
       <option>2021</option>
-      <option>2020</option>
-      <option>2019</option>
-      <option>2018</option>
-      <option>2017</option>
-      <option>2016</option>
-      <option>2015</option>
+      <!-- Add more years as needed -->
     </select>
-    <div
-      id="info-text"
-      style="text-align: right; flex-grow: 1; padding-left: 20px;"
-    >
-      <!-- Info text zal hier automatisch geüpdatet worden -->
-    </div>
+  </div>
+  <div
+    id="info-text"
+    style="position: absolute; top: 10px; right: 20px; background-color: #f9f9f9; padding: 5px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); font-size: 12px;"
+  >
+    <!-- Info text will be automatically updated by updateInfoText function -->
   </div>
 </div>
 
 <style>
   .bar:hover {
-    fill: red; /* Kleurt de bar rood bij hover */
+    fill: red; /* Highlights the bar in red on hover */
   }
 
   #viz-container {
-    /* Container stijlen */
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    height: 20vh;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
   .controls {
-    /* Stijlen voor de dropdowns en info text */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 95%;
+  }
+
+  .info-text {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: #f9f9f9;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 12px;
   }
 </style>
